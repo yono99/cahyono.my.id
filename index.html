@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cahyono — Fullstack Web Developer</title>
+<meta name="description" content="Cahyono — Fullstack Web Developer & Software Engineer dari Tangerang. Membangun nilaia.com, platform belajar & tryout berbasis AI. Next.js, Laravel, TypeScript." />
+<meta property="og:title" content="Cahyono — Fullstack Web Developer" />
+<meta property="og:description" content="Membangun produk web yang benar-benar dipakai. Next.js · Laravel · TypeScript." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cahyono.my.id" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231A3C6E'/><text x='50' y='68' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>C</text></svg>" />
+<style>
+  :root{
+    --navy:#1A3C6E; --navy-d:#0F2647; --teal:#0E7C66; --teal-l:#13a386;
+    --ink:#0F172A; --muted:#64748B; --line:#E2E8F0; --bg:#F8FAFC; --card:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  section{padding:84px 0}
+  h2.title{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:8px;letter-spacing:-.5px}
+  .sub{color:var(--muted);margin-bottom:38px;font-size:15px}
+  .accent{color:var(--teal)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(248,250,252,.85);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:800;color:var(--navy);font-size:18px;letter-spacing:-.5px}
+  .logo span{color:var(--teal)}
+  .navlinks{display:flex;gap:26px;font-size:14px;font-weight:600;color:var(--muted)}
+  .navlinks a:hover{color:var(--navy)}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{padding:96px 0 72px;background:
+    radial-gradient(1200px 400px at 80% -10%, rgba(14,124,102,.10), transparent),
+    radial-gradient(900px 380px at 0% 0%, rgba(26,60,110,.10), transparent)}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#E7F3EF;color:var(--teal);
+    font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(14,124,102,.18)}
+  .hero h1{font-size:52px;line-height:1.05;font-weight:800;letter-spacing:-1.5px;color:var(--ink)}
+  .hero h1 .grad{background:linear-gradient(120deg,var(--navy),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:620px;margin:20px 0 30px}
+  @media(max-width:680px){.hero h1{font-size:38px}.hero p.lead{font-size:17px}}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;
+    padding:13px 24px;border-radius:12px;transition:.15s;border:1.5px solid transparent}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--navy-d);transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line);color:var(--navy);background:#fff}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-2px)}
+  .stats{display:flex;gap:40px;margin-top:48px;flex-wrap:wrap}
+  .stat b{display:block;font-size:30px;font-weight:800;color:var(--navy)}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* ABOUT */
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr;gap:32px}}
+  .about p{margin-bottom:16px;color:#334155}
+  .factcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .factcard h4{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:14px}
+  .fact{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .fact:last-child{border:0}
+  .fact b{color:var(--navy)}
+
+  /* SKILLS */
+  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:780px){.skillgrid{grid-template-columns:1fr}}
+  .skillcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.15s}
+  .skillcard:hover{border-color:var(--teal);transform:translateY(-3px);box-shadow:0 10px 30px -12px rgba(15,38,71,.18)}
+  .skillcard h4{color:var(--navy);font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{background:#F1F5F9;color:#475569;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:8px}
+
+  /* PROJECTS */
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:30px}
+  .proj-body{padding:30px}
+  .proj .flag{display:inline-block;background:#E7F3EF;color:var(--teal);font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+  .proj h3{font-size:23px;color:var(--navy);margin-bottom:10px;letter-spacing:-.4px}
+  .proj p{color:#475569;margin-bottom:18px}
+  .proj .tags{margin-bottom:20px}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px}
+  .shots img{width:100%;border-radius:12px;border:1px solid var(--line)}
+  .demo-img{width:100%;border-radius:14px;border:1px solid var(--line);margin-bottom:18px}
+  .links{display:flex;gap:18px;font-weight:700;font-size:14px;flex-wrap:wrap}
+  .links a{color:var(--teal);display:inline-flex;align-items:center;gap:6px}
+  .links a:hover{text-decoration:underline}
+  .casebox{background:#F8FAFC;border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0;font-size:14.5px}
+  .casebox .row{display:flex;gap:10px;margin-bottom:10px}
+  .casebox .row:last-child{margin-bottom:0}
+  .casebox .k{font-weight:800;white-space:nowrap}
+  .k.red{color:#DC2626}.k.green{color:var(--teal)}.k.blue{color:var(--navy)}
+
+  /* EXPERIENCE / EDU timeline */
+  .tl{border-left:2px solid var(--line);padding-left:26px;margin-left:6px}
+  .tl-item{position:relative;padding-bottom:28px}
+  .tl-item::before{content:"";position:absolute;left:-33px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px var(--bg)}
+  .tl-item .when{font-size:13px;color:var(--teal);font-weight:700}
+  .tl-item h4{font-size:17px;color:var(--navy);margin:3px 0}
+  .tl-item .org{font-size:14px;color:var(--muted);margin-bottom:8px}
+  .tl-item ul{margin-left:18px;color:#475569;font-size:14.5px}
+  .tl-item li{margin-bottom:4px}
+
+  .certgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:680px){.certgrid{grid-template-columns:1fr}}
+  .cert{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;display:flex;gap:10px}
+  .cert .yr{color:var(--teal);font-weight:700;white-space:nowrap}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(135deg,var(--navy),var(--navy-d));border-radius:24px;padding:54px 40px;text-align:center;color:#fff}
+  .contact h2{font-size:30px;font-weight:800;margin-bottom:10px}
+  .contact p{color:#C7D2E4;margin-bottom:28px}
+  .contact .cta{justify-content:center}
+  .btn-teal{background:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teal-l);transform:translateY(-2px)}
+  .btn-line{border-color:rgba(255,255,255,.3);color:#fff}
+  .btn-line:hover{border-color:#fff;transform:translateY(-2px)}
+
+  footer{text-align:center;padding:34px 0;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+  .reveal{opacity:0;transform:translateY(24px);transition:.6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo">cahyono<span>.</span>my.id</div>
+      <div class="navlinks">
+        <a href="#about">Tentang</a>
+        <a href="#skills">Skill</a>
+        <a href="#projects">Proyek</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span> Tersedia untuk peluang &amp; kolaborasi</span>
+    <h1>Halo, saya <span class="grad">Cahyono</span><br/>Fullstack Web Developer</h1>
+    <p class="lead">Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#projects">Lihat Proyek →</a>
+      <a class="btn btn-ghost" href="mailto:cahyono060799@gmail.com">Hubungi Saya</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>3.52</b><span>IPK (Cum Laude)</span></div>
+      <div class="stat"><b>5+</b><span>Tahun ngulik teknologi</span></div>
+      <div class="stat"><b>1</b><span>Produk SaaS dirilis</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap grid2 reveal">
+    <div class="about">
+      <h2 class="title">Tentang Saya</h2>
+      <p class="sub">Dari TKJ ke S1 Informatika — fondasi teknologi yang luas.</p>
+      <p>Saya seorang <b>Fullstack Web Developer</b> asal Tangerang dengan latar belakang vokasi <b>Teknik Komputer &amp; Jaringan (TKJ)</b> yang dilanjutkan ke <b>S1 Teknik Informatika</b> (IPK 3.52, Cum Laude).</p>
+      <p>Karena suka belajar teknologi sejak awal, fondasi saya luas: dari jaringan &amp; server (CCNA, Mikrotik, Linux) sampai pengembangan web modern (Next.js, Laravel, Vue). Kombinasi ini memberi saya cara pandang <b>end-to-end</b> — dari infrastruktur, backend, sampai antarmuka pengguna.</p>
+      <p>Saya senang mengubah ide jadi software yang jalan. Bukti terbaiknya: <b>nilaia.com</b>, platform e-learning ber-AI yang saya bangun sendiri dari nol hingga produksi.</p>
+    </div>
+    <div class="factcard">
+      <h4>Profil Singkat</h4>
+      <div class="fact"><span>Lokasi</span><b>Tangerang, ID</b></div>
+      <div class="fact"><span>Pendidikan</span><b>S1 Informatika</b></div>
+      <div class="fact"><span>Fokus</span><b>Fullstack Web</b></div>
+      <div class="fact"><span>Sertifikasi</span><b>Cisco CCNA</b></div>
+      <div class="fact"><span>Status</span><b style="color:var(--teal)">Open to work</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap reveal">
+    <h2 class="title">Keahlian</h2>
+    <p class="sub">Tools &amp; teknologi yang saya pakai sehari-hari.</p>
+    <div class="skillgrid">
+      <div class="skillcard">
+        <h4>🎨 Frontend</h4>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Vue.js</span>
+          <span class="tag">Nuxt.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <h4>⚙️ Backend</h4>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">Laravel</span>
+          <span class="tag">REST API</span><span class="tag">Prisma</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <h4>🗄️ Database</h4>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Supabase</span><span class="tag">Firebase</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <h4>🤖 AI &amp; Integrasi</h4>
+        <div class="tags">
+          <span class="tag">Google Gemini</span><span class="tag">Payment Gateway</span><span class="tag">SVG Engine</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <h4>🛠️ DevOps &amp; Infra</h4>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">Vercel</span><span class="tag">Linux</span>
+          <span class="tag">Cisco CCNA</span><span class="tag">Mikrotik</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <h4>🎯 Desain</h4>
+        <div class="tags">
+          <span class="tag">Figma</span><span class="tag">UI/UX</span><span class="tag">Design System</span><span class="tag">Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap reveal">
+    <h2 class="title">Proyek Unggulan</h2>
+    <p class="sub">Produk &amp; karya yang paling merepresentasikan saya.</p>
+
+    <!-- nilaia -->
+    <div class="proj">
+      <div class="proj-body">
+        <span class="flag">🚀 Produk SaaS — Live</span>
+        <h3>nilaia.com — Platform Belajar &amp; Tryout AI</h3>
+        <p>Platform e-learning &amp; simulasi CAT (CPNS/SKD, UTBK, ujian sekolah) yang saya bangun sendiri end-to-end. Fitur: generasi soal otomatis berbasis AI, simulasi ujian dengan penilaian resmi &amp; anti-cheat, gamifikasi (XP, streak, leaderboard), langganan dengan payment gateway, plus aplikasi Android pendamping.</p>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Prisma</span>
+          <span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">Google Gemini</span><span class="tag">Duitku</span>
+        </div>
+        <div class="shots">
+          <img src="assets/app-home.jpg" alt="Beranda nilaia" loading="lazy"/>
+          <img src="assets/app-tryout.jpg" alt="Simulasi tryout" loading="lazy"/>
+          <img src="assets/app-hasil.jpg" alt="Hasil tryout" loading="lazy"/>
+        </div>
+        <div class="links">
+          <a href="https://nilaia.com" target="_blank" rel="noopener">🌐 Kunjungi nilaia.com</a>
+          <a href="https://github.com/yono99/nilaia-app" target="_blank" rel="noopener">📱 Repo App Android</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- figural engine case study -->
+    <div class="proj">
+      <div class="proj-body">
+        <span class="flag">🧠 Case Study Teknis</span>
+        <h3>Figural Engine — Generator Soal Penalaran Deterministik</h3>
+        <p>Engine yang men-generate soal penalaran figural (analogi gambar, diagrammatic reasoning) gaya ujian TIU/CPNS — <b>tanpa</b> mengandalkan AI untuk menggambar, karena AI generatif gagal di presisi visual &amp; akurasi kunci jawaban.</p>
+        <img class="demo-img" src="assets/figural-demo.gif" alt="Demo output figural engine" loading="lazy"/>
+        <div class="casebox">
+          <div class="row"><span class="k red">Masalah</span><span>AI generatif tidak presisi menggambar &amp; kunci jawabannya tak bisa dipercaya — fatal untuk produk ujian.</span></div>
+          <div class="row"><span class="k green">Solusi</span><span>Membalik pendekatan: <b>kode</b> yang menggambar (SVG) &amp; menghitung kunci jawaban secara deterministik; AI hanya menyusun teks.</span></div>
+          <div class="row"><span class="k blue">Dampak</span><span>Soal tak terbatas, biaya AI ~nol untuk visual, &amp; akurasi kunci jawaban 100%. Jadi pembeda teknis utama produk.</span></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin:0">💡 Konsep procedural reasoning dikenal di riset (Raven's Matrices, DeepMind PGM); kontribusi saya mengadaptasinya jadi engine produksi TypeScript/SVG untuk sub-tipe TIU otentik Indonesia. <i>Kode bersifat proprietary.</i></p>
+      </div>
+    </div>
+
+    <!-- other -->
+    <div class="proj">
+      <div class="proj-body">
+        <span class="flag">🎓 Lainnya</span>
+        <h3>Skripsi &amp; UI/UX Design System</h3>
+        <p><b>Tugas Akhir (Skripsi):</b> aplikasi web fullstack dengan Laravel (MVC), MySQL ternormalisasi, &amp; REST API — di-deploy ke server Linux.</p>
+        <p style="margin-bottom:0"><b>UI/UX Design Mastery (MSIB Skilvul, ≈20 SKS):</b> membawa produk Android dari brainstorming &amp; riset hingga <b>design system</b> lengkap (skala tipografi, token warna, komponen reusable) di Figma — dengan wireframing, prototyping, &amp; usability testing.</p>
+        <div class="tags" style="margin-top:18px">
+          <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Figma</span><span class="tag">Design System</span><span class="tag">Agile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap grid2 reveal">
+    <div>
+      <h2 class="title">Pengalaman &amp; Pendidikan</h2>
+      <p class="sub">Perjalanan teknis saya.</p>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="when">2023 — Sekarang</div>
+          <h4>Fullstack Developer — nilaia.com</h4>
+          <div class="org">Produk independen · Remote</div>
+          <ul>
+            <li>Membangun platform AI e-learning dari nol (Next.js, TypeScript, Prisma, PostgreSQL).</li>
+            <li>Engine generasi soal di atas Google Gemini + integrasi payment &amp; app Android.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="when">Sep 2019 — Okt 2023</div>
+          <h4>S1 Teknik Informatika (S.Kom)</h4>
+          <div class="org">Universitas Muhammadiyah Tangerang · IPK 3.52 (Cum Laude)</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2016 — 2017</div>
+          <h4>IT Support Intern</h4>
+          <div class="org">PT. Sharprindo Dinamika Prima · Tangerang</div>
+          <ul>
+            <li>Administrasi Windows Server &amp; Active Directory, konfigurasi jaringan Mikrotik, dukungan teknis end-user.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="when">Lulus 2017</div>
+          <h4>SMK — Teknik Komputer &amp; Jaringan (TKJ)</h4>
+          <div class="org">SMK Yuppentek 1 Tangerang</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="title" style="font-size:22px">Sertifikasi</h2>
+      <p class="sub" style="margin-bottom:20px">Belajar berkelanjutan.</p>
+      <div class="certgrid">
+        <div class="cert"><span class="yr">2022</span><span>Cisco CCNAv7 — Switching, Routing &amp; Wireless</span></div>
+        <div class="cert"><span class="yr">2021</span><span>Cisco CCNAv7 — Intro to Networks</span></div>
+        <div class="cert"><span class="yr">2023</span><span>DevOps Fundamentals — Dicoding</span></div>
+        <div class="cert"><span class="yr">2023</span><span>JavaScript &amp; SQL Fundamentals — Dicoding</span></div>
+        <div class="cert"><span class="yr">2022</span><span>Go Programming — Programmer Zaman Now</span></div>
+        <div class="cert"><span class="yr">2022</span><span>UI/UX Design Mastery — MSIB Skilvul</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="contact">
+      <h2>Mari bekerja sama 🤝</h2>
+      <p>Terbuka untuk peluang kerja, proyek freelance, atau sekadar diskusi teknologi.</p>
+      <div class="cta">
+        <a class="btn btn-teal" href="mailto:cahyono060799@gmail.com">✉️ Email Saya</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/cahyono99/" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/yono99" target="_blank" rel="noopener">⌨ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> Cahyono · Dibuat dengan ❤️ di Tangerang · cahyono.my.id
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
