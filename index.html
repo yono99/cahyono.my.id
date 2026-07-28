@@ -187,22 +187,119 @@
   .stat b { display: block; font-size: 24px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
   .stat span { font-size: 12px; color: var(--muted); font-weight: 500; }
 
-  /* PHOTO CARD */
+  /* PHOTO CARD & 8-BIT RETRO ANIMATION */
   .hero-visual { display: flex; justify-content: center; }
   .photo-card {
     position: relative; width: 100%; max-width: 340px;
     background: #fff; border: 1px solid var(--line);
     border-radius: 24px; padding: 20px; box-shadow: var(--shadow-lg);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .photo-card.pixel-mode {
+    background: #0F172A;
+    border-color: rgba(20, 184, 166, 0.4);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.25), var(--shadow-lg);
   }
   .photo-frame {
     aspect-ratio: 1; border-radius: 18px; overflow: hidden;
     background: linear-gradient(145deg, var(--navy) 0%, #1a3a5c 50%, var(--teal-d) 100%);
     display: flex; align-items: center; justify-content: center;
     position: relative;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+  }
+  .photo-frame.pixelated {
+    border: 3px solid #14B8A6;
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(0,0,0,0.6);
+  }
+  .pixel-avatar-wrap {
+    position: relative;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    animation: pixelBob 2.4s steps(4, jump-none) infinite;
+  }
+  @keyframes pixelBob {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-4px); }
+    50% { transform: translateY(-2px); }
+    75% { transform: translateY(-6px); }
   }
   .photo-frame img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: filter 0.2s ease;
   }
+  .pixel-img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .pixel-blink-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    opacity: 0;
+    transition: opacity 0.05s steps(1);
+    pointer-events: none;
+  }
+  .pixel-blink-img.blinking {
+    opacity: 1;
+  }
+  .crt-scanlines {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .crt-glow {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 20px rgba(20, 184, 166, 0.3);
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.3s;
+  }
+  .pixel-particles-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .retro-level-badge {
+    position: absolute; top: 10px; right: 10px; z-index: 4;
+    background: #14B8A6; color: #0B1220;
+    font-family: monospace, sans-serif;
+    font-weight: 800; font-size: 11px; letter-spacing: 1px;
+    padding: 3px 8px; border-radius: 4px;
+    box-shadow: 2px 2px 0px #0B1220;
+    text-transform: uppercase;
+    animation: retroPulse 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes retroPulse {
+    from { opacity: 0.85; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.05); }
+  }
+  .avatar-toggle-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 14px; width: 100%;
+    background: #0B1220; color: #14B8A6;
+    border: 2px solid #14B8A6;
+    font-family: inherit; font-size: 12.5px; font-weight: 700;
+    padding: 9px 14px; border-radius: 10px; cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+  }
+  .avatar-toggle-btn:hover {
+    background: #14B8A6; color: #0B1220;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 184, 166, 0.35);
+  }
+  .photo-card.pixel-mode .photo-meta h3 { color: #F8FAFC; }
+  .photo-card.pixel-mode .photo-meta p { color: #94A3B8; }
   .photo-initials {
     font-size: 96px; font-weight: 800; color: rgba(255,255,255,0.92);
     letter-spacing: -0.04em; user-select: none;
@@ -464,16 +561,17 @@
     </div>
 
     <div class="hero-visual">
-      <div class="photo-card">
+      <div class="photo-card pixel-mode" id="photoCard">
         <div class="photo-ring"></div>
-        <!--
-          FOTO PROFESIONAL (direkomendasikan):
-          Ganti blok .photo-initials di bawah dengan:
-          <img src="assets/portrait.jpg" alt="Foto Cahyono" width="300" height="300" />
-          Tips: headshot formal/casual rapi, wajah jelas, background netral, rasio 1:1, min 600×600px.
-        -->
-        <div class="photo-frame" id="portrait">
-          <span class="photo-initials">C</span>
+        <div class="photo-frame pixelated" id="portrait">
+          <div class="retro-level-badge" id="retroBadge">LVL 99</div>
+          <div class="crt-scanlines" id="crtLines"></div>
+          <div class="crt-glow" id="crtGlow"></div>
+          <canvas class="pixel-particles-canvas" id="pixelCanvas"></canvas>
+          <div class="pixel-avatar-wrap" id="avatarWrap">
+            <img src="assets/pixel-avatar.png" alt="Foto Cahyono 8-Bit Pixel Avatar" class="pixel-img" id="avatarBase" width="300" height="300" />
+            <img src="assets/pixel-avatar-blink.png" alt="Foto Cahyono 8-Bit Blink Frame" class="pixel-blink-img" id="avatarBlink" width="300" height="300" />
+          </div>
         </div>
         <div class="photo-meta">
           <h3>Cahyono</h3>
@@ -483,6 +581,9 @@
             <span class="chip">Next.js</span>
             <span class="chip">TypeScript</span>
           </div>
+          <button class="avatar-toggle-btn" id="avatarToggleBtn" type="button" aria-label="Ganti mode foto profile">
+            <span>🕹️ Mode: 8-Bit Animasi</span>
+          </button>
         </div>
       </div>
     </div>
@@ -741,16 +842,121 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Auto-load portrait if file exists (optional)
-  const img = new Image();
-  img.onload = () => {
-    const frame = document.getElementById('portrait');
-    frame.innerHTML = '';
-    img.alt = 'Foto Cahyono';
-    img.width = 300; img.height = 300;
-    frame.appendChild(img);
-  };
-  img.src = 'assets/portrait.jpg';
+  // 8-BIT AVATAR ANIMATION ENGINE
+  (function initPixelAvatar() {
+    const baseImg = document.getElementById('avatarBase');
+    const blinkImg = document.getElementById('avatarBlink');
+    const photoCard = document.getElementById('photoCard');
+    const portraitFrame = document.getElementById('portrait');
+    const toggleBtn = document.getElementById('avatarToggleBtn');
+    const canvas = document.getElementById('pixelCanvas');
+    const retroBadge = document.getElementById('retroBadge');
+    const crtLines = document.getElementById('crtLines');
+    const crtGlow = document.getElementById('crtGlow');
+    const avatarWrap = document.getElementById('avatarWrap');
+
+    if (!baseImg || !blinkImg || !toggleBtn || !canvas) return;
+
+    let isPixelMode = true;
+
+    // 1. Eye Blink Animation Timer
+    function scheduleBlink() {
+      if (!isPixelMode) return;
+      const delay = Math.random() * 3200 + 2400; // 2.4s to 5.6s interval
+      setTimeout(() => {
+        if (isPixelMode) {
+          blinkImg.classList.add('blinking');
+          setTimeout(() => {
+            blinkImg.classList.remove('blinking');
+            scheduleBlink();
+          }, 180); // Blink duration 180ms
+        } else {
+          scheduleBlink();
+        }
+      }, delay);
+    }
+    scheduleBlink();
+
+    // 2. Floating 8-Bit Pixel Particles Canvas Animation
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    let particles = [];
+
+    function resizeCanvas() {
+      if (!portraitFrame) return;
+      canvas.width = portraitFrame.clientWidth || 300;
+      canvas.height = portraitFrame.clientHeight || 300;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createParticle() {
+      const colors = ['#14B8A6', '#38BDF8', '#818CF8', '#2DD4BF'];
+      return {
+        x: Math.random() * (canvas.width || 300),
+        y: (canvas.height || 300) + Math.random() * 10,
+        size: Math.random() < 0.6 ? 4 : (Math.random() < 0.85 ? 6 : 8), // 8-bit stepped pixel sizes
+        speedY: Math.random() * 0.7 + 0.3,
+        opacity: Math.random() * 0.75 + 0.25,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      };
+    }
+
+    for (let i = 0; i < 18; i++) {
+      const p = createParticle();
+      p.y = Math.random() * (canvas.height || 300);
+      particles.push(p);
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (isPixelMode) {
+        particles.forEach(p => {
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          // Draw hard-edged 8-bit pixel square
+          ctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.size, p.size);
+          p.y -= p.speedY;
+          if (p.y < -p.size) {
+            p.y = canvas.height + 5;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+      }
+      animationFrameId = requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    // 3. Toggle Mode between 8-Bit Animated Arcade & Real Photo
+    toggleBtn.addEventListener('click', () => {
+      isPixelMode = !isPixelMode;
+      if (isPixelMode) {
+        photoCard.classList.add('pixel-mode');
+        portraitFrame.classList.add('pixelated');
+        baseImg.src = 'assets/pixel-avatar.png';
+        baseImg.classList.add('pixel-img');
+        blinkImg.style.display = 'block';
+        if (retroBadge) retroBadge.style.display = 'block';
+        if (crtLines) crtLines.style.display = 'block';
+        if (crtGlow) crtGlow.style.display = 'block';
+        if (avatarWrap) avatarWrap.style.animation = 'pixelBob 2.4s steps(4, jump-none) infinite';
+        toggleBtn.innerHTML = '<span>🕹️ Mode: 8-Bit Animasi</span>';
+      } else {
+        photoCard.classList.remove('pixel-mode');
+        portraitFrame.classList.remove('pixelated');
+        baseImg.src = 'assets/portrait.jpg';
+        baseImg.classList.remove('pixel-img');
+        blinkImg.style.display = 'none';
+        blinkImg.classList.remove('blinking');
+        if (retroBadge) retroBadge.style.display = 'none';
+        if (crtLines) crtLines.style.display = 'none';
+        if (crtGlow) crtGlow.style.display = 'none';
+        if (avatarWrap) avatarWrap.style.animation = 'none';
+        toggleBtn.innerHTML = '<span>📷 Mode: Foto Asli</span>';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
+  })();
 </script>
 </body>
 </html>
