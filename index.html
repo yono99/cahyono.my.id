@@ -514,6 +514,63 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: 0.55s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
+  /* MODE SWITCH */
+  .mode-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .mode-switch-wrapper .mode-label {
+    transition: color 0.2s;
+  }
+  .mode-switch-wrapper .mode-label.active {
+    color: var(--navy);
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 28px;
+  }
+  .slider:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: var(--teal);
+  }
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+
   @media (max-width: 560px) {
     section { padding: 72px 0; }
     .hero { padding: 48px 0 64px; }
@@ -546,14 +603,22 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge"><span class="dot"></span> Tersedia untuk peluang &amp; kolaborasi</span>
-      <h1>Halo, saya <em>Cahyono</em><br/>Fullstack Web Developer</h1>
-      <p class="lead">Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.</p>
+      <span class="badge" id="heroBadge"><span class="dot"></span> Tersedia untuk peluang &amp; kolaborasi</span>
+<div class="mode-switch-wrapper">
+  <span class="mode-label">IT Support</span>
+  <label class="switch">
+    <input type="checkbox" id="modeToggle" checked>
+    <span class="slider round"></span>
+  </label>
+  <span class="mode-label">Web Developer</span>
+</div>
+      <h1 id="heroTitle">Halo, saya <em>Cahyono</em><br/>Fullstack Web Developer</h1>
+      <p class="lead" id="heroLead">Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.</p>
       <div class="cta">
         <a class="btn btn-primary" href="#projects">Lihat Proyek →</a>
         <a class="btn btn-ghost" href="mailto:cahyono060799@gmail.com">Hubungi Saya</a>
       </div>
-      <div class="stats">
+      <div class="stats" id="heroStats">
         <div class="stat"><b>3.52</b><span>IPK / 4.00</span></div>
         <div class="stat"><b>5+</b><span>Tahun ngulik tech</span></div>
         <div class="stat"><b>1</b><span>Produk SaaS live</span></div>
@@ -954,6 +1019,82 @@
         if (avatarWrap) avatarWrap.style.animation = 'none';
         toggleBtn.innerHTML = '<span>📷 Mode: Foto Asli</span>';
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
+  })();
+
+  // ===== MODE SWITCH: IT SUPPORT vs WEB DEVELOPER =====
+  (function initModeSwitch() {
+    const toggle = document.getElementById('modeToggle');
+    if (!toggle) return;
+
+    // Data for each mode
+    const data = {
+      webdev: {
+        badge: 'Tersedia untuk peluang &amp; kolaborasi',
+        title: 'Halo, saya <em>Cahyono</em><br/>Fullstack Web Developer',
+        lead: 'Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.',
+        stats: [
+          { b: '3.52', span: 'IPK / 4.00' },
+          { b: '5+', span: 'Tahun ngulik tech' },
+          { b: '1', span: 'Produk SaaS live' }
+        ]
+      },
+      itsupport: {
+        badge: 'Tersedia untuk posisi IT Support &amp; Jaringan',
+        title: 'Halo, saya <em>Cahyono</em><br/>IT Support Specialist',
+        lead: 'Berpengalaman dalam administrasi jaringan, server, dan dukungan teknis end-to-end. Terbiasa dengan Windows Server, Active Directory, Mikrotik, dan troubleshooting hardware/software.',
+        stats: [
+          { b: '3.52', span: 'IPK / 4.00' },
+          { b: '5+', span: 'Tahun di dunia IT' },
+          { b: 'CCNA', span: 'Sertifikasi Cisco' }
+        ]
+      }
+    };
+
+    function updateMode(mode) {
+      const d = mode === 'webdev' ? data.webdev : data.itsupport;
+
+      // Badge
+      const badge = document.getElementById('heroBadge');
+      if (badge) badge.innerHTML = '<span class="dot"></span> ' + d.badge;
+
+      // Title
+      const title = document.getElementById('heroTitle');
+      if (title) title.innerHTML = d.title;
+
+      // Lead
+      const lead = document.getElementById('heroLead');
+      if (lead) lead.innerHTML = d.lead;
+
+      // Stats
+      const statsContainer = document.getElementById('heroStats');
+      if (statsContainer) {
+        statsContainer.innerHTML = d.stats.map(s =>
+          `<div class="stat"><b>${s.b}</b><span>${s.span}</span></div>`
+        ).join('');
+      }
+
+      // Update label active state
+      const labels = document.querySelectorAll('.mode-label');
+      if (labels.length === 2) {
+        labels[0].classList.toggle('active', mode === 'itsupport');
+        labels[1].classList.toggle('active', mode === 'webdev');
+      }
+    }
+
+    // Set initial state (checked = webdev)
+    if (toggle.checked) {
+      updateMode('webdev');
+    } else {
+      updateMode('itsupport');
+    }
+
+    toggle.addEventListener('change', function() {
+      if (this.checked) {
+        updateMode('webdev');
+      } else {
+        updateMode('itsupport');
       }
     });
   })();
