@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cahyono — Fullstack Web Developer</title>
+<meta name="description" content="Cahyono — Fullstack Web Developer dari Tangerang. Membangun nilaia.com, platform belajar & tryout berbasis AI. Next.js, TypeScript, Laravel." />
+<meta name="author" content="Cahyono" />
+<meta name="theme-color" content="#0B1220" />
+<meta property="og:title" content="Cahyono — Fullstack Web Developer" />
+<meta property="og:description" content="Membangun produk web yang benar-benar dipakai. Next.js · TypeScript · Laravel." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cahyono.my.id" />
+<meta property="og:image" content="https://cahyono.my.id/assets/app-home.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cahyono — Fullstack Web Developer" />
+<meta name="twitter:description" content="Membangun produk web yang benar-benar dipakai. Next.js · TypeScript · Laravel." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://cahyono.my.id/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B1220'/><text x='50' y='68' font-size='52' font-family='Inter,Arial' font-weight='700' fill='%2314B8A6' text-anchor='middle'>C</text></svg>" />
+<style>
+  :root {
+    --navy: #0B1220;
+    --navy-2: #111827;
+    --navy-3: #1F2937;
+    --teal: #14B8A6;
+    --teal-d: #0D9488;
+    --teal-soft: rgba(20, 184, 166, 0.12);
+    --ink: #0F172A;
+    --body: #334155;
+    --muted: #64748B;
+    --line: #E2E8F0;
+    --line-2: #F1F5F9;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --radius: 16px;
+    --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.12);
+    --shadow-lg: 0 24px 48px -18px rgba(15, 23, 42, 0.18);
+    --max: 1100px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal-d); margin-bottom: 14px;
+  }
+  h2.section-title {
+    font-size: clamp(28px, 4vw, 36px); font-weight: 800;
+    letter-spacing: -0.03em; color: var(--navy); margin-bottom: 12px; line-height: 1.15;
+  }
+  .section-sub { color: var(--muted); font-size: 16px; max-width: 560px; margin-bottom: 40px; }
+
+  /* NAV */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(248, 250, 252, 0.8);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  header.scrolled {
+    border-bottom-color: var(--line);
+    box-shadow: 0 4px 20px -12px rgba(15, 23, 42, 0.15);
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    font-weight: 800; font-size: 18px; letter-spacing: -0.04em; color: var(--navy);
+  }
+  .logo span { color: var(--teal); }
+  .navlinks {
+    display: flex; align-items: center; gap: 8px; list-style: none;
+  }
+  .navlinks a {
+    font-size: 14px; font-weight: 600; color: var(--muted);
+    padding: 8px 12px; border-radius: 8px; transition: 0.15s;
+  }
+  .navlinks a:hover { color: var(--navy); background: var(--line-2); }
+  .nav-cta {
+    margin-left: 8px !important;
+    background: var(--navy) !important; color: #fff !important;
+    padding: 9px 16px !important;
+  }
+  .nav-cta:hover { background: var(--navy-2) !important; color: #fff !important; }
+  .menu-btn {
+    display: none; background: none; border: 1px solid var(--line);
+    width: 42px; height: 42px; border-radius: 10px; cursor: pointer;
+    align-items: center; justify-content: center; flex-direction: column; gap: 5px;
+  }
+  .menu-btn span {
+    display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px;
+    transition: 0.2s;
+  }
+  .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-btn.open span:nth-child(2) { opacity: 0; }
+  .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 780px) {
+    .menu-btn { display: flex; }
+    .navlinks {
+      display: none; position: absolute; top: 68px; left: 0; right: 0;
+      flex-direction: column; background: #fff; border-bottom: 1px solid var(--line);
+      padding: 12px 16px 20px; gap: 4px; box-shadow: var(--shadow);
+    }
+    .navlinks.open { display: flex; }
+    .navlinks a { width: 100%; padding: 12px 14px; }
+    .nav-cta { margin-left: 0 !important; text-align: center; margin-top: 6px !important; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 72px 0 88px;
+    background:
+      radial-gradient(900px 420px at 90% -10%, rgba(20, 184, 166, 0.13), transparent 60%),
+      radial-gradient(700px 380px at -5% 20%, rgba(11, 18, 32, 0.06), transparent 55%),
+      var(--bg);
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.35fr 0.85fr;
+    gap: 56px; align-items: center;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-soft); color: var(--teal-d);
+    font-weight: 600; font-size: 13px; padding: 7px 14px;
+    border-radius: 999px; margin-bottom: 22px; border: 1px solid rgba(20, 184, 166, 0.2);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2); }
+    50% { box-shadow: 0 0 0 7px rgba(20, 184, 166, 0.08); }
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5.5vw, 52px); line-height: 1.08;
+    font-weight: 800; letter-spacing: -0.035em; color: var(--navy); margin-bottom: 18px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(120deg, var(--navy) 20%, var(--teal-d));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .lead {
+    font-size: 18px; color: var(--body); max-width: 540px;
+    margin-bottom: 32px; line-height: 1.7;
+  }
+  .hero .lead b { color: var(--navy); font-weight: 600; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: 15px; padding: 13px 22px;
+    border-radius: 12px; transition: 0.18s; border: 1.5px solid transparent; cursor: pointer;
+  }
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-primary:hover { background: var(--navy-2); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn-ghost { border-color: var(--line); color: var(--navy); background: #fff; }
+  .btn-ghost:hover { border-color: var(--navy-3); transform: translateY(-2px); }
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 48px; max-width: 480px;
+  }
+  .stat {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 14px; text-align: center;
+  }
+  .stat b { display: block; font-size: 24px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
+  .stat span { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+  /* PHOTO CARD & 8-BIT RETRO ANIMATION */
+  .hero-visual { display: flex; justify-content: center; }
+  .photo-card {
+    position: relative; width: 100%; max-width: 340px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 24px; padding: 20px; box-shadow: var(--shadow-lg);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .photo-card.pixel-mode {
+    background: #0F172A;
+    border-color: rgba(20, 184, 166, 0.4);
+    box-shadow: 0 0 30px rgba(20, 184, 166, 0.25), var(--shadow-lg);
+  }
+  .photo-frame {
+    aspect-ratio: 1; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(145deg, var(--navy) 0%, #1a3a5c 50%, var(--teal-d) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+  }
+  .photo-frame.pixelated {
+    border: 3px solid #14B8A6;
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(0,0,0,0.6);
+  }
+  .pixel-avatar-wrap {
+    position: relative;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    animation: pixelBob 2.4s steps(4, jump-none) infinite;
+  }
+  @keyframes pixelBob {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-4px); }
+    50% { transform: translateY(-2px); }
+    75% { transform: translateY(-6px); }
+  }
+  .photo-frame img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: filter 0.2s ease;
+  }
+  .pixel-img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .pixel-blink-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    opacity: 0;
+    transition: opacity 0.05s steps(1);
+    pointer-events: none;
+  }
+  .pixel-blink-img.blinking {
+    opacity: 1;
+  }
+  .crt-scanlines {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .crt-glow {
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 20px rgba(20, 184, 166, 0.3);
+    pointer-events: none;
+    z-index: 3;
+    transition: opacity 0.3s;
+  }
+  .pixel-particles-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .retro-level-badge {
+    position: absolute; top: 10px; right: 10px; z-index: 4;
+    background: #14B8A6; color: #0B1220;
+    font-family: monospace, sans-serif;
+    font-weight: 800; font-size: 11px; letter-spacing: 1px;
+    padding: 3px 8px; border-radius: 4px;
+    box-shadow: 2px 2px 0px #0B1220;
+    text-transform: uppercase;
+    animation: retroPulse 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes retroPulse {
+    from { opacity: 0.85; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.05); }
+  }
+  .avatar-toggle-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 14px; width: 100%;
+    background: #0B1220; color: #14B8A6;
+    border: 2px solid #14B8A6;
+    font-family: inherit; font-size: 12.5px; font-weight: 700;
+    padding: 9px 14px; border-radius: 10px; cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+  }
+  .avatar-toggle-btn:hover {
+    background: #14B8A6; color: #0B1220;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 184, 166, 0.35);
+  }
+  .photo-card.pixel-mode .photo-meta h3 { color: #F8FAFC; }
+  .photo-card.pixel-mode .photo-meta p { color: #94A3B8; }
+  .photo-initials {
+    font-size: 96px; font-weight: 800; color: rgba(255,255,255,0.92);
+    letter-spacing: -0.04em; user-select: none;
+  }
+  .photo-meta { margin-top: 18px; text-align: center; }
+  .photo-meta h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .photo-meta p { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .photo-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .chip {
+    font-size: 11px; font-weight: 600; padding: 5px 10px;
+    border-radius: 999px; background: var(--line-2); color: var(--body);
+  }
+  .chip.live { background: var(--teal-soft); color: var(--teal-d); }
+  .photo-ring {
+    position: absolute; inset: -8px; border-radius: 28px;
+    border: 1px dashed rgba(20, 184, 166, 0.35); pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .photo-card { max-width: 280px; }
+    .photo-initials { font-size: 72px; }
+    .stats { max-width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr; }
+    .stat { text-align: left; display: flex; align-items: baseline; gap: 10px; padding: 14px 16px; }
+    .stat b { font-size: 20px; }
+  }
+
+  /* ABOUT */
+  .grid2 { display: grid; grid-template-columns: 1.45fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; gap: 28px; } }
+  .about-body p { color: var(--body); margin-bottom: 16px; font-size: 16px; }
+  .about-body p b { color: var(--navy); font-weight: 600; }
+  .factcard {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 28px; box-shadow: var(--shadow);
+  }
+  .factcard h4 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin-bottom: 18px; font-weight: 700;
+  }
+  .fact {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid var(--line-2); font-size: 14px; gap: 12px;
+  }
+  .fact:last-child { border: 0; padding-bottom: 0; }
+  .fact span { color: var(--muted); }
+  .fact b { color: var(--navy); font-weight: 600; text-align: right; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--teal-soft); color: var(--teal-d);
+    font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+  }
+
+  /* SKILLS */
+  #skills { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .skillgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .skillgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .skillgrid { grid-template-columns: 1fr; } }
+  .skillcard {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px; transition: 0.2s;
+  }
+  .skillcard:hover {
+    border-color: rgba(20, 184, 166, 0.4); transform: translateY(-3px);
+    box-shadow: var(--shadow); background: #fff;
+  }
+  .skillcard .icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--navy); color: var(--teal); font-size: 16px;
+    margin-bottom: 14px; font-weight: 700;
+  }
+  .skillcard h4 { color: var(--navy); font-size: 15px; margin-bottom: 12px; font-weight: 700; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: #fff; border: 1px solid var(--line); color: var(--body);
+    font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 8px;
+  }
+  .skillcard:hover .tag { background: var(--line-2); border-color: transparent; }
+
+  /* PROJECTS */
+  .proj {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 24px; overflow: hidden; margin-bottom: 28px;
+    transition: 0.2s; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  .proj:hover { box-shadow: var(--shadow); border-color: #cbd5e1; }
+  .proj-featured {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+  }
+  @media (max-width: 860px) {
+    .proj-featured { grid-template-columns: 1fr; }
+  }
+  .proj-shots {
+    background: var(--navy); padding: 20px; display: flex; flex-direction: column; gap: 12px;
+    min-height: 100%;
+  }
+  .shot-main {
+    border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
+    aspect-ratio: 16/10;
+  }
+  .shot-main img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .shot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .shot-row .shot {
+    border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
+    aspect-ratio: 16/10;
+  }
+  .shot-row img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .proj-body { padding: 32px; display: flex; flex-direction: column; }
+  .flag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--teal-soft); color: var(--teal-d);
+    font-weight: 700; font-size: 12px; padding: 5px 12px;
+    border-radius: 999px; margin-bottom: 14px; width: fit-content;
+  }
+  .flag.tech { background: #EEF2FF; color: #4338CA; }
+  .flag.other { background: var(--line-2); color: var(--body); }
+  .proj h3 {
+    font-size: 22px; color: var(--navy); margin-bottom: 12px;
+    letter-spacing: -0.025em; font-weight: 800; line-height: 1.25;
+  }
+  .proj p { color: var(--body); margin-bottom: 16px; font-size: 15px; }
+  .proj .tags { margin-bottom: 22px; }
+  .proj .tag { background: var(--line-2); border-color: transparent; }
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; font-size: 13px; padding: 10px 14px;
+    border-radius: 10px; transition: 0.15s;
+  }
+  .link-btn.solid { background: var(--navy); color: #fff; }
+  .link-btn.solid:hover { background: var(--navy-2); }
+  .link-btn.outline { border: 1px solid var(--line); color: var(--navy); background: #fff; }
+  .link-btn.outline:hover { border-color: var(--navy-3); }
+
+  .casebox {
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px; margin: 8px 0 16px; font-size: 14px;
+  }
+  .casebox .row { display: grid; grid-template-columns: 72px 1fr; gap: 10px; margin-bottom: 12px; }
+  .casebox .row:last-child { margin-bottom: 0; }
+  .casebox .k { font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 2px; }
+  .k.red { color: #DC2626; }
+  .k.green { color: var(--teal-d); }
+  .k.blue { color: #4338CA; }
+  .demo-wrap {
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--line);
+    margin-bottom: 18px; background: var(--navy);
+  }
+  .demo-wrap img { width: 100%; }
+
+  /* TIMELINE */
+  #experience { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .tl { border-left: 2px solid var(--line); padding-left: 24px; margin-left: 6px; }
+  .tl-item { position: relative; padding-bottom: 28px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -31px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--teal); box-shadow: 0 0 0 4px #fff, 0 0 0 6px var(--line);
+  }
+  .tl-item .when { font-size: 12px; color: var(--teal-d); font-weight: 700; letter-spacing: 0.02em; }
+  .tl-item h4 { font-size: 16px; color: var(--navy); margin: 4px 0 2px; font-weight: 700; }
+  .tl-item .org { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .tl-item ul { margin-left: 16px; color: var(--body); font-size: 14px; }
+  .tl-item li { margin-bottom: 4px; }
+
+  .certgrid { display: grid; gap: 10px; }
+  .cert {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; font-size: 13.5px; display: flex; gap: 12px; align-items: flex-start;
+    transition: 0.15s;
+  }
+  .cert:hover { background: #fff; border-color: #cbd5e1; }
+  .cert .yr {
+    color: var(--teal-d); font-weight: 700; font-size: 12px;
+    background: var(--teal-soft); padding: 3px 8px; border-radius: 6px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: linear-gradient(145deg, var(--navy) 0%, #152238 100%);
+    border-radius: 28px; padding: 56px 40px; text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .contact::before {
+    content: ""; position: absolute; width: 400px; height: 400px;
+    border-radius: 50%; background: rgba(20, 184, 166, 0.12);
+    top: -120px; right: -80px; pointer-events: none;
+  }
+  .contact h2 { font-size: clamp(26px, 4vw, 34px); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.03em; position: relative; }
+  .contact p { color: #94A3B8; margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; position: relative; }
+  .contact .cta { justify-content: center; position: relative; }
+  .btn-teal { background: var(--teal); color: var(--navy); }
+  .btn-teal:hover { background: #2DD4BF; transform: translateY(-2px); }
+  .btn-line { border-color: rgba(255,255,255,0.2); color: #fff; background: transparent; }
+  .btn-line:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+
+  footer {
+    text-align: center; padding: 36px 0 48px;
+    color: var(--muted); font-size: 13px;
+  }
+  footer a { color: var(--navy); font-weight: 600; }
+  footer a:hover { color: var(--teal-d); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(20px); transition: 0.55s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* MODE SWITCH */
+  .mode-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .mode-switch-wrapper .mode-label {
+    transition: color 0.2s;
+  }
+  .mode-switch-wrapper .mode-label.active {
+    color: var(--navy);
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 28px;
+  }
+  .slider:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: var(--teal);
+  }
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
+
+  @media (max-width: 560px) {
+    section { padding: 72px 0; }
+    .hero { padding: 48px 0 64px; }
+    .contact { padding: 40px 24px; }
+    .proj-body { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo">cahyono<span>.</span>my.id</a>
+      <button class="menu-btn" id="menu-btn" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navlinks" id="navlinks">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#experience">Pengalaman</a></li>
+        <li><a class="nav-cta" href="#contact">Hubungi</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge" id="heroBadge"><span class="dot"></span> Tersedia untuk peluang &amp; kolaborasi</span>
+<div class="mode-switch-wrapper">
+  <span class="mode-label">IT Support</span>
+  <label class="switch">
+    <input type="checkbox" id="modeToggle" checked>
+    <span class="slider round"></span>
+  </label>
+  <span class="mode-label">Web Developer</span>
+</div>
+      <h1 id="heroTitle">Halo, saya <em>Cahyono</em><br/>Fullstack Web Developer</h1>
+      <p class="lead" id="heroLead">Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">Lihat Proyek →</a>
+        <a class="btn btn-ghost" href="mailto:cahyono060799@gmail.com">Hubungi Saya</a>
+      </div>
+      <div class="stats" id="heroStats">
+        <div class="stat"><b>3.52</b><span>IPK / 4.00</span></div>
+        <div class="stat"><b>5+</b><span>Tahun ngulik tech</span></div>
+        <div class="stat"><b>1</b><span>Produk SaaS live</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="photo-card pixel-mode" id="photoCard">
+        <div class="photo-ring"></div>
+        <div class="photo-frame pixelated" id="portrait">
+          <div class="retro-level-badge" id="retroBadge">LVL 99</div>
+          <div class="crt-scanlines" id="crtLines"></div>
+          <div class="crt-glow" id="crtGlow"></div>
+          <canvas class="pixel-particles-canvas" id="pixelCanvas"></canvas>
+          <div class="pixel-avatar-wrap" id="avatarWrap">
+            <img src="assets/pixel-avatar.png" alt="Foto Cahyono 8-Bit Pixel Avatar" class="pixel-img" id="avatarBase" width="300" height="300" />
+            <img src="assets/pixel-avatar-blink.png" alt="Foto Cahyono 8-Bit Blink Frame" class="pixel-blink-img" id="avatarBlink" width="300" height="300" />
+          </div>
+        </div>
+        <div class="photo-meta">
+          <h3>Cahyono</h3>
+          <p>Fullstack Developer · Tangerang</p>
+          <div class="photo-tags">
+            <span class="chip live">Open to work</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">TypeScript</span>
+          </div>
+          <button class="avatar-toggle-btn" id="avatarToggleBtn" type="button" aria-label="Ganti mode foto profile">
+            <span>🕹️ Mode: 8-Bit Animasi</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap grid2 reveal">
+    <div class="about-body">
+      <span class="eyebrow">Tentang</span>
+      <h2 class="section-title">Dari TKJ ke produk SaaS produksi</h2>
+      <p>Saya seorang <b>Fullstack Web Developer</b> asal Tangerang dengan latar belakang vokasi <b>Teknik Komputer &amp; Jaringan (TKJ)</b> yang dilanjutkan ke <b>S1 Teknik Informatika</b> (IPK 3.52 / 4.00).</p>
+      <p>Fondasi saya luas: dari jaringan &amp; server (CCNA, Mikrotik, Linux) sampai pengembangan web modern (Next.js, Laravel, Vue). Kombinasi ini memberi cara pandang <b>end-to-end</b> — dari infrastruktur, backend, sampai antarmuka pengguna.</p>
+      <p>Saya senang mengubah ide jadi software yang jalan. Bukti terbaiknya: <b>nilaia.com</b>, platform e-learning ber-AI yang saya bangun sendiri dari nol hingga produksi.</p>
+    </div>
+    <div class="factcard">
+      <h4>Profil Singkat</h4>
+      <div class="fact"><span>Lokasi</span><b>Tangerang, ID</b></div>
+      <div class="fact"><span>Pendidikan</span><b>S1 Informatika</b></div>
+      <div class="fact"><span>Fokus</span><b>Fullstack Web</b></div>
+      <div class="fact"><span>Sertifikasi</span><b>Cisco CCNA</b></div>
+      <div class="fact"><span>Status</span><b><span class="status-pill"><span class="dot" style="width:6px;height:6px;box-shadow:none"></span> Open to work</span></b></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap reveal">
+    <span class="eyebrow">Keahlian</span>
+    <h2 class="section-title">Tools &amp; stack yang saya pakai</h2>
+    <p class="section-sub">Teknologi yang dipakai sehari-hari untuk membangun, merilis, dan merawat produk.</p>
+    <div class="skillgrid">
+      <div class="skillcard">
+        <div class="icon">FE</div>
+        <h4>Frontend</h4>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Vue.js</span>
+          <span class="tag">Nuxt.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <div class="icon">BE</div>
+        <h4>Backend</h4>
+        <div class="tags">
+          <span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">Laravel</span>
+          <span class="tag">REST API</span><span class="tag">Prisma</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <div class="icon">DB</div>
+        <h4>Database</h4>
+        <div class="tags">
+          <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">Supabase</span><span class="tag">Firebase</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <div class="icon">AI</div>
+        <h4>AI &amp; Integrasi</h4>
+        <div class="tags">
+          <span class="tag">Google Gemini</span><span class="tag">Payment Gateway</span><span class="tag">SVG Engine</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <div class="icon">OPS</div>
+        <h4>DevOps &amp; Infra</h4>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">Vercel</span><span class="tag">Linux</span>
+          <span class="tag">Cisco CCNA</span><span class="tag">Mikrotik</span>
+        </div>
+      </div>
+      <div class="skillcard">
+        <div class="icon">UX</div>
+        <h4>Desain</h4>
+        <div class="tags">
+          <span class="tag">Figma</span><span class="tag">UI/UX</span><span class="tag">Design System</span><span class="tag">Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap reveal">
+    <span class="eyebrow">Proyek</span>
+    <h2 class="section-title">Karya unggulan</h2>
+    <p class="section-sub">Produk dan case study yang paling merepresentasikan kemampuan end-to-end saya.</p>
+
+    <!-- nilaia -->
+    <article class="proj proj-featured">
+      <div class="proj-shots">
+        <div class="shot-main">
+          <img src="assets/app-home.jpg" alt="Beranda nilaia.com" loading="lazy" width="640" height="400" />
+        </div>
+        <div class="shot-row">
+          <div class="shot">
+            <img src="assets/app-tryout.jpg" alt="Simulasi tryout nilaia" loading="lazy" width="320" height="200" />
+          </div>
+          <div class="shot">
+            <img src="assets/app-hasil.jpg" alt="Hasil tryout nilaia" loading="lazy" width="320" height="200" />
+          </div>
+        </div>
+      </div>
+      <div class="proj-body">
+        <span class="flag">● Produk SaaS — Live</span>
+        <h3>nilaia.com — Platform Belajar &amp; Tryout AI</h3>
+        <p>Platform e-learning &amp; simulasi CAT (CPNS/SKD, UTBK, ujian sekolah) yang dibangun end-to-end. Fitur: generasi soal otomatis berbasis AI, simulasi ujian dengan penilaian resmi &amp; anti-cheat, gamifikasi (XP, streak, leaderboard), langganan dengan payment gateway, plus aplikasi Android pendamping.</p>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Prisma</span>
+          <span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">Google Gemini</span><span class="tag">Duitku</span>
+        </div>
+        <div class="links">
+          <a class="link-btn solid" href="https://nilaia.com" target="_blank" rel="noopener">Kunjungi nilaia.com ↗</a>
+          <a class="link-btn outline" href="https://github.com/yono99/nilaia-app" target="_blank" rel="noopener">Repo App Android</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- figural engine -->
+    <article class="proj">
+      <div class="proj-body">
+        <span class="flag tech">Case Study Teknis</span>
+        <h3>Figural Engine — Generator Soal Penalaran Deterministik</h3>
+        <p>Engine yang men-generate soal penalaran figural (analogi gambar, diagrammatic reasoning) gaya ujian TIU/CPNS — <b>tanpa</b> mengandalkan AI untuk menggambar, karena AI generatif gagal di presisi visual &amp; akurasi kunci jawaban.</p>
+        <div class="demo-wrap">
+          <img src="assets/figural-demo.gif" alt="Demo output figural engine" loading="lazy" width="800" height="400" />
+        </div>
+        <div class="casebox">
+          <div class="row"><span class="k red">Masalah</span><span>AI generatif tidak presisi menggambar &amp; kunci jawabannya tak bisa dipercaya — fatal untuk produk ujian.</span></div>
+          <div class="row"><span class="k green">Solusi</span><span>Membalik pendekatan: <b>kode</b> yang menggambar (SVG) &amp; menghitung kunci jawaban secara deterministik; AI hanya menyusun teks.</span></div>
+          <div class="row"><span class="k blue">Dampak</span><span>Soal tak terbatas, biaya AI ~nol untuk visual, &amp; akurasi kunci jawaban 100%. Jadi pembeda teknis utama produk.</span></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin:0">Konsep procedural reasoning dikenal di riset (Raven's Matrices, DeepMind PGM); kontribusi saya mengadaptasinya jadi engine produksi TypeScript/SVG untuk sub-tipe TIU otentik Indonesia. <i>Kode bersifat proprietary.</i></p>
+      </div>
+    </article>
+
+    <!-- other -->
+    <article class="proj">
+      <div class="proj-body">
+        <span class="flag other">Lainnya</span>
+        <h3>Skripsi &amp; UI/UX Design System</h3>
+        <p><b>Tugas Akhir (Skripsi):</b> aplikasi web fullstack dengan Laravel (MVC), MySQL ternormalisasi, &amp; REST API — di-deploy ke server Linux.</p>
+        <p style="margin-bottom:0"><b>UI/UX Design Mastery (MSIB Skilvul, ≈20 SKS):</b> membawa produk Android dari brainstorming &amp; riset hingga <b>design system</b> lengkap (skala tipografi, token warna, komponen reusable) di Figma — dengan wireframing, prototyping, &amp; usability testing.</p>
+        <div class="tags" style="margin-top:18px;margin-bottom:0">
+          <span class="tag">Laravel</span><span class="tag">MySQL</span><span class="tag">Figma</span><span class="tag">Design System</span><span class="tag">Agile</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap grid2 reveal">
+    <div>
+      <span class="eyebrow">Karir</span>
+      <h2 class="section-title">Pengalaman &amp; pendidikan</h2>
+      <p class="section-sub">Perjalanan teknis dari jaringan hingga produk SaaS.</p>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="when">2023 — Sekarang</div>
+          <h4>Fullstack Developer — nilaia.com</h4>
+          <div class="org">Produk independen · Remote</div>
+          <ul>
+            <li>Membangun platform AI e-learning dari nol (Next.js, TypeScript, Prisma, PostgreSQL).</li>
+            <li>Engine generasi soal di atas Google Gemini + integrasi payment &amp; app Android.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="when">Sep 2019 — Okt 2023</div>
+          <h4>S1 Teknik Informatika (S.Kom)</h4>
+          <div class="org">Universitas Muhammadiyah Tangerang · IPK 3.52 / 4.00</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2016 — 2017</div>
+          <h4>IT Support Intern</h4>
+          <div class="org">PT. Sharprindo Dinamika Prima · Tangerang</div>
+          <ul>
+            <li>Administrasi Windows Server &amp; Active Directory, konfigurasi jaringan Mikrotik, dukungan teknis end-user.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="when">Lulus 2017</div>
+          <h4>SMK — Teknik Komputer &amp; Jaringan (TKJ)</h4>
+          <div class="org">SMK Yuppentek 1 Tangerang</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">Kredensial</span>
+      <h2 class="section-title" style="font-size:28px">Sertifikasi</h2>
+      <p class="section-sub" style="margin-bottom:24px">Belajar berkelanjutan di networking, DevOps, dan desain.</p>
+      <div class="certgrid">
+        <div class="cert"><span class="yr">2022</span><span>Cisco CCNAv7 — Switching, Routing &amp; Wireless</span></div>
+        <div class="cert"><span class="yr">2021</span><span>Cisco CCNAv7 — Intro to Networks</span></div>
+        <div class="cert"><span class="yr">2023</span><span>DevOps Fundamentals — Dicoding</span></div>
+        <div class="cert"><span class="yr">2023</span><span>JavaScript &amp; SQL Fundamentals — Dicoding</span></div>
+        <div class="cert"><span class="yr">2022</span><span>Go Programming — Programmer Zaman Now</span></div>
+        <div class="cert"><span class="yr">2022</span><span>UI/UX Design Mastery — MSIB Skilvul</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="contact">
+      <h2>Mari bekerja sama</h2>
+      <p>Terbuka untuk peluang kerja, proyek freelance, atau diskusi teknologi.</p>
+      <div class="cta">
+        <a class="btn btn-teal" href="mailto:cahyono060799@gmail.com">Email Saya</a>
+        <a class="btn btn-line" href="https://www.linkedin.com/in/cahyono99/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-line" href="https://github.com/yono99" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © <span id="yr"></span> Cahyono · Dibuat di Tangerang · <a href="https://cahyono.my.id">cahyono.my.id</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Sticky header
+  const header = document.getElementById('site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const navlinks = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    menuBtn.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 8-BIT AVATAR ANIMATION ENGINE
+  (function initPixelAvatar() {
+    const baseImg = document.getElementById('avatarBase');
+    const blinkImg = document.getElementById('avatarBlink');
+    const photoCard = document.getElementById('photoCard');
+    const portraitFrame = document.getElementById('portrait');
+    const toggleBtn = document.getElementById('avatarToggleBtn');
+    const canvas = document.getElementById('pixelCanvas');
+    const retroBadge = document.getElementById('retroBadge');
+    const crtLines = document.getElementById('crtLines');
+    const crtGlow = document.getElementById('crtGlow');
+    const avatarWrap = document.getElementById('avatarWrap');
+
+    if (!baseImg || !blinkImg || !toggleBtn || !canvas) return;
+
+    let isPixelMode = true;
+
+    // 1. Eye Blink Animation Timer
+    function scheduleBlink() {
+      if (!isPixelMode) return;
+      const delay = Math.random() * 3200 + 2400; // 2.4s to 5.6s interval
+      setTimeout(() => {
+        if (isPixelMode) {
+          blinkImg.classList.add('blinking');
+          setTimeout(() => {
+            blinkImg.classList.remove('blinking');
+            scheduleBlink();
+          }, 180); // Blink duration 180ms
+        } else {
+          scheduleBlink();
+        }
+      }, delay);
+    }
+    scheduleBlink();
+
+    // 2. Floating 8-Bit Pixel Particles Canvas Animation
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    let particles = [];
+
+    function resizeCanvas() {
+      if (!portraitFrame) return;
+      canvas.width = portraitFrame.clientWidth || 300;
+      canvas.height = portraitFrame.clientHeight || 300;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createParticle() {
+      const colors = ['#14B8A6', '#38BDF8', '#818CF8', '#2DD4BF'];
+      return {
+        x: Math.random() * (canvas.width || 300),
+        y: (canvas.height || 300) + Math.random() * 10,
+        size: Math.random() < 0.6 ? 4 : (Math.random() < 0.85 ? 6 : 8), // 8-bit stepped pixel sizes
+        speedY: Math.random() * 0.7 + 0.3,
+        opacity: Math.random() * 0.75 + 0.25,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      };
+    }
+
+    for (let i = 0; i < 18; i++) {
+      const p = createParticle();
+      p.y = Math.random() * (canvas.height || 300);
+      particles.push(p);
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (isPixelMode) {
+        particles.forEach(p => {
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          // Draw hard-edged 8-bit pixel square
+          ctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.size, p.size);
+          p.y -= p.speedY;
+          if (p.y < -p.size) {
+            p.y = canvas.height + 5;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+      }
+      animationFrameId = requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    // 3. Toggle Mode between 8-Bit Animated Arcade & Real Photo
+    toggleBtn.addEventListener('click', () => {
+      isPixelMode = !isPixelMode;
+      if (isPixelMode) {
+        photoCard.classList.add('pixel-mode');
+        portraitFrame.classList.add('pixelated');
+        baseImg.src = 'assets/pixel-avatar.png';
+        baseImg.classList.add('pixel-img');
+        blinkImg.style.display = 'block';
+        if (retroBadge) retroBadge.style.display = 'block';
+        if (crtLines) crtLines.style.display = 'block';
+        if (crtGlow) crtGlow.style.display = 'block';
+        if (avatarWrap) avatarWrap.style.animation = 'pixelBob 2.4s steps(4, jump-none) infinite';
+        toggleBtn.innerHTML = '<span>🕹️ Mode: 8-Bit Animasi</span>';
+      } else {
+        photoCard.classList.remove('pixel-mode');
+        portraitFrame.classList.remove('pixelated');
+        baseImg.src = 'assets/portrait.jpg';
+        baseImg.classList.remove('pixel-img');
+        blinkImg.style.display = 'none';
+        blinkImg.classList.remove('blinking');
+        if (retroBadge) retroBadge.style.display = 'none';
+        if (crtLines) crtLines.style.display = 'none';
+        if (crtGlow) crtGlow.style.display = 'none';
+        if (avatarWrap) avatarWrap.style.animation = 'none';
+        toggleBtn.innerHTML = '<span>📷 Mode: Foto Asli</span>';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
+  })();
+
+  // ===== MODE SWITCH: IT SUPPORT vs WEB DEVELOPER =====
+  (function initModeSwitch() {
+    const toggle = document.getElementById('modeToggle');
+    if (!toggle) return;
+
+    // Data for each mode
+    const data = {
+      webdev: {
+        badge: 'Tersedia untuk peluang &amp; kolaborasi',
+        title: 'Halo, saya <em>Cahyono</em><br/>Fullstack Web Developer',
+        lead: 'Saya membangun dan merilis produk web yang benar-benar dipakai — dari frontend yang rapi sampai backend yang andal. Saat ini membangun <b>nilaia.com</b>, platform belajar &amp; tryout berbasis AI.',
+        stats: [
+          { b: '3.52', span: 'IPK / 4.00' },
+          { b: '5+', span: 'Tahun ngulik tech' },
+          { b: '1', span: 'Produk SaaS live' }
+        ]
+      },
+      itsupport: {
+        badge: 'Tersedia untuk posisi IT Support &amp; Jaringan',
+        title: 'Halo, saya <em>Cahyono</em><br/>IT Support Specialist',
+        lead: 'Berpengalaman dalam administrasi jaringan, server, dan dukungan teknis end-to-end. Terbiasa dengan Windows Server, Active Directory, Mikrotik, dan troubleshooting hardware/software.',
+        stats: [
+          { b: '3.52', span: 'IPK / 4.00' },
+          { b: '5+', span: 'Tahun di dunia IT' },
+          { b: 'CCNA', span: 'Sertifikasi Cisco' }
+        ]
+      }
+    };
+
+    function updateMode(mode) {
+      const d = mode === 'webdev' ? data.webdev : data.itsupport;
+
+      // Badge
+      const badge = document.getElementById('heroBadge');
+      if (badge) badge.innerHTML = '<span class="dot"></span> ' + d.badge;
+
+      // Title
+      const title = document.getElementById('heroTitle');
+      if (title) title.innerHTML = d.title;
+
+      // Lead
+      const lead = document.getElementById('heroLead');
+      if (lead) lead.innerHTML = d.lead;
+
+      // Stats
+      const statsContainer = document.getElementById('heroStats');
+      if (statsContainer) {
+        statsContainer.innerHTML = d.stats.map(s =>
+          `<div class="stat"><b>${s.b}</b><span>${s.span}</span></div>`
+        ).join('');
+      }
+
+      // Update label active state
+      const labels = document.querySelectorAll('.mode-label');
+      if (labels.length === 2) {
+        labels[0].classList.toggle('active', mode === 'itsupport');
+        labels[1].classList.toggle('active', mode === 'webdev');
+      }
+    }
+
+    // Set initial state (checked = webdev)
+    if (toggle.checked) {
+      updateMode('webdev');
+    } else {
+      updateMode('itsupport');
+    }
+
+    toggle.addEventListener('change', function() {
+      if (this.checked) {
+        updateMode('webdev');
+      } else {
+        updateMode('itsupport');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
