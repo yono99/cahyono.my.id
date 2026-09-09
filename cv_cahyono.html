@@ -20,6 +20,7 @@
  cursor: pointer;
  box-shadow:04px12px rgba(20,184,166,0.4);
  transition: background0.2s;
+ text-decoration: none;
  }
  .download-btn:hover {
  background: #0D9488;
@@ -29,31 +30,10 @@
  display: none;
  }
  }
- .download-btn {
- position: fixed;
- top:20px;
- right:20px;
- z-index:1000;
- background: #14B8A6;
- color: #fff;
- border: none;
- border-radius:8px;
- padding:12px20px;
- font-size:14px;
- font-weight:600;
- cursor: pointer;
- box-shadow:04px12px rgba(20,184,166,0.4);
- transition: background0.2s;
- }
- .download-btn:hover {
- background: #0D9488;
- }
- @media print {
- .download-btn {
- display: none;
- }
- }
-        * {
+        .download-btn { position: fixed; top:20px; right:20px; z-index:1000; background: #14B8A6; color: #fff; border: none; border-radius:8px; padding:12px20px; font-size:14px; font-weight:600; cursor: pointer; box-shadow:04px12px rgba(20,184,166,0.4); transition: background0.2s; text-decoration:none; }
+ .download-btn:hover { background: #0D9488; }
+ @media print { .download-btn { display: none; } }
+ * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -350,6 +330,7 @@
     </style>
 </head>
 <body>
+<a href="cv_cahyono.pdf" download="Cahyono_CV.pdf" class="download-btn">Download PDF</a>
 <div class="cv-container">
     <!-- SIDEBAR -->
     <div class="sidebar">
