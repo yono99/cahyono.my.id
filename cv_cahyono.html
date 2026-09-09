@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Cahyono - IT Support & Web Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #1a1a2e;
+        }
+        .cv-container {
+            max-width: 1000px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+        /* SIDEBAR */
+        .sidebar {
+            background: #0B1220;
+            color: #e2e8f0;
+            padding: 36px 24px;
+        }
+        .sidebar .photo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .sidebar .photo img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #14B8A6;
+            background: #1a2a3a;
+        }
+        .sidebar .photo .initials {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #14B8A6, #0D9488);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 800;
+            color: #0B1220;
+            margin: 0 auto;
+            border: 3px solid #14B8A6;
+        }
+        .sidebar h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+        .sidebar .title-role {
+            text-align: center;
+            color: #14B8A6;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .sidebar-section {
+            margin-bottom: 24px;
+        }
+        .sidebar-section h3 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #14B8A6;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 8px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+        .contact-item a:hover {
+            color: #14B8A6;
+        }
+        .contact-item .icon {
+            width: 20px;
+            text-align: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .skill-tags .tag {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+        .skill-tags .tag.highlight {
+            background: rgba(20, 184, 166, 0.2);
+            border-color: rgba(20, 184, 166, 0.3);
+            color: #14B8A6;
+        }
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .lang-item .level {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .cert-item {
+            font-size: 13px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            line-height: 1.4;
+        }
+        .cert-item .cert-title {
+            color: #fff;
+            font-weight: 500;
+        }
+        .cert-item .cert-date {
+            color: #94a3b8;
+            font-size: 11px;
+            display: block;
+            margin-top: 2px;
+        }
+        .cert-item .cert-org {
+            color: #14B8A6;
+            font-size: 11px;
+            display: block;
+        }
+        /* MAIN */
+        .main-content {
+            padding: 36px 40px;
+            background: #fff;
+        }
+        .main-content .section {
+            margin-bottom: 28px;
+        }
+        .main-content .section:last-child {
+            margin-bottom: 0;
+        }
+        .main-content .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #0B1220;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+        .main-content .section-title span {
+            color: #14B8A6;
+        }
+        .summary p {
+            font-size: 14px;
+            color: #334155;
+            line-height: 1.7;
+        }
+        .experience-item {
+            margin-bottom: 18px;
+        }
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+        .experience-item .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+        }
+        .experience-item .header h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0B1220;
+        }
+        .experience-item .header .company {
+            font-size: 14px;
+            font-weight: 600;
+            color: #14B8A6;
+        }
+        .experience-item .header .date {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .experience-item ul {
+            margin-left: 18px;
+            margin-top: 6px;
+            font-size: 13px;
+            color: #334155;
+            list-style: disc;
+        }
+        .experience-item ul li {
+            margin-bottom: 3px;
+        }
+        .edu-item {
+            margin-bottom: 12px;
+        }
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+        .edu-item .header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+        }
+        .edu-item .header h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0B1220;
+        }
+        .edu-item .header .school {
+            font-size: 13px;
+            color: #14B8A6;
+            font-weight: 500;
+        }
+        .edu-item .header .date {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .edu-item .detail {
+            font-size: 13px;
+            color: #475569;
+            margin-top: 2px;
+        }
+        .project-item {
+            margin-bottom: 14px;
+        }
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+        .project-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0B1220;
+        }
+        .project-item p {
+            font-size: 13px;
+            color: #475569;
+            margin-top: 2px;
+        }
+        @media (max-width: 760px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                padding: 28px 20px;
+            }
+            .main-content {
+                padding: 28px 20px;
+            }
+        }
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .cv-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="cv-container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="photo">
+            <div class="initials">C</div>
+        </div>
+        <h1>Cahyono</h1>
+        <div class="title-role">IT Support · Networking Enthusiast</div>
+
+        <div class="sidebar-section">
+            <h3>Kontak</h3>
+            <div class="contact-item"><span class="icon">📍</span> Tangerang, Indonesia</div>
+            <div class="contact-item"><span class="icon">📱</span> +62 851 1234 5678</div>
+            <div class="contact-item"><span class="icon">✉️</span> <a href="mailto:cahyono060799@gmail.com">cahyono060799@gmail.com</a></div>
+            <div class="contact-item"><span class="icon">🌐</span> <a href="https://cahyono.my.id" target="_blank">cahyono.my.id</a></div>
+            <div class="contact-item"><span class="icon">🔗</span> <a href="https://linkedin.com/in/cahyono99" target="_blank">linkedin.com/in/cahyono99</a></div>
+            <div class="contact-item"><span class="icon">🐙</span> <a href="https://github.com/yono99" target="_blank">github.com/yono99</a></div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Keahlian Teknis</h3>
+            <div style="margin-bottom:10px">
+                <div style="font-size:12px;font-weight:600;color:#94a3b8;margin-bottom:4px">Help Desk &amp; Support</div>
+                <div class="skill-tags">
+                    <span class="tag highlight">Troubleshooting</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">Windows Server</span>
+                    <span class="tag">End-user Support</span>
+                </div>
+            </div>
+            <div style="margin-bottom:10px">
+                <div style="font-size:12px;font-weight:600;color:#94a3b8;margin-bottom:4px">Server &amp; OS</div>
+                <div class="skill-tags">
+                    <span class="tag">Windows Server</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">DNS</span>
+                    <span class="tag">DHCP</span>
+                </div>
+            </div>
+            <div style="margin-bottom:10px">
+                <div style="font-size:12px;font-weight:600;color:#94a3b8;margin-bottom:4px">Networking</div>
+                <div class="skill-tags">
+                    <span class="tag highlight">CCNA</span>
+                    <span class="tag">Mikrotik</span>
+                    <span class="tag">Routing &amp; Switching</span>
+                    <span class="tag">Wireless</span>
+                    <span class="tag">TCP/IP</span>
+                </div>
+            </div>
+            <div>
+                <div style="font-size:12px;font-weight:600;color:#94a3b8;margin-bottom:4px">Tools &amp; Lainnya</div>
+                <div class="skill-tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">Linux CLI</span>
+                    <span class="tag">VMware</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Laravel</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Bahasa</h3>
+            <div class="lang-item"><span>Indonesia</span><span class="level">Native</span></div>
+            <div class="lang-item"><span>English</span><span class="level">Professional</span></div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Sertifikasi</h3>
+            <div class="cert-item">
+                <span class="cert-title">CCNAv7: Switching, Routing &amp; Wireless Essentials</span>
+                <span class="cert-org">Cisco Networking Academy</span>
+                <span class="cert-date">Februari 2022</span>
+            </div>
+            <div class="cert-item">
+                <span class="cert-title">CCNAv7: Introduction to Networks</span>
+                <span class="cert-org">Cisco Networking Academy</span>
+                <span class="cert-date">Agustus 2021</span>
+            </div>
+            <div class="cert-item">
+                <span class="cert-title">DevOps Fundamentals</span>
+                <span class="cert-org">Dicoding</span>
+                <span class="cert-date">2023</span>
+            </div>
+            <div class="cert-item">
+                <span class="cert-title">JavaScript &amp; SQL Fundamentals</span>
+                <span class="cert-org">Dicoding</span>
+                <span class="cert-date">2023</span>
+            </div>
+            <div class="cert-item">
+                <span class="cert-title">UI/UX Design Mastery</span>
+                <span class="cert-org">MSIB Skilvul</span>
+                <span class="cert-date">2022</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="section summary">
+            <div class="section-title">Profil</div>
+            <p>Lulusan S1 Teknik Informatika (IPK 3.52/4.00) dengan latar belakang SMK Teknik Komputer &amp; Jaringan (TKJ).
+            Memiliki kombinasi keahlian di <b>infrastruktur TI</b> (jaringan, server, support) dan <b>pengembangan web</b>
+            (Next.js, Laravel, TypeScript). Berpengalaman sebagai IT Support Intern, sertifikasi Cisco CCNA, dan saat ini
+            membangun produk SaaS <b>nilaia.com</b> — platform e-learning berbasis AI. Terbuka untuk peluang di bidang IT Support, Networking, atau Fullstack Development.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Pengalaman</div>
+            <div class="experience-item">
+                <div class="header">
+                    <h4>Fullstack Developer — nilaia.com</h4>
+                    <span class="date">2023 – Sekarang</span>
+                </div>
+                <div class="header" style="margin-top:-4px">
+                    <span class="company">Produk independen · Remote</span>
+                </div>
+                <ul>
+                    <li>Membangun platform e-learning &amp; tryout AI dari nol (Next.js, TypeScript, Prisma, PostgreSQL).</li>
+                    <li>Engine generasi soal otomatis dengan Google Gemini + integrasi payment gateway.</li>
+                    <li>Mengembangkan aplikasi Android pendamping untuk produk.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="header">
+                    <h4>IT Support Intern</h4>
+                    <span class="date">2016 – 2017</span>
+                </div>
+                <div class="header" style="margin-top:-4px">
+                    <span class="company">PT. Sharprindo Dinamika Prima · Tangerang</span>
+                </div>
+                <ul>
+                    <li>Administrasi Windows Server &amp; Active Directory, manajemen pengguna &amp; kebijakan grup.</li>
+                    <li>Konfigurasi dan pemeliharaan jaringan Mikrotik (router, firewall, bandwidth management).</li>
+                    <li>Dukungan teknis end-user (hardware, software, jaringan) serta instalasi dan migrasi sistem.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Pendidikan</div>
+            <div class="edu-item">
+                <div class="header">
+                    <h4>S1 Teknik Informatika</h4>
+                    <span class="date">2019 – 2023</span>
+                </div>
+                <div class="header" style="margin-top:-4px">
+                    <span class="school">Universitas Muhammadiyah Tangerang</span>
+                </div>
+                <div class="detail">IPK 3.52 / 4.00 · Skripsi aplikasi web fullstack (Laravel, MySQL, REST API) di-deploy ke server Linux.</div>
+            </div>
+            <div class="edu-item">
+                <div class="header">
+                    <h4>SMK Teknik Komputer &amp; Jaringan (TKJ)</h4>
+                    <span class="date">2017</span>
+                </div>
+                <div class="header" style="margin-top:-4px">
+                    <span class="school">SMK Yuppentek 1 Tangerang</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Proyek Unggulan</div>
+            <div class="project-item">
+                <h4>nilaia.com — Platform Belajar &amp; Tryout AI</h4>
+                <p>Platform e-learning dengan generasi soal berbasis AI, simulasi CAT (CPNS/UTBK), gamifikasi (XP, streak, leaderboard), dan langganan dengan payment gateway. Teknologi: Next.js, TypeScript, Prisma, PostgreSQL, Supabase, Google Gemini.</p>
+            </div>
+            <div class="project-item">
+                <h4>Figural Engine — Generator Soal Penalaran Deterministik</h4>
+                <p>Engine berbasis TypeScript/SVG yang menghasilkan soal penalaran figural (TIU/CPNS) secara deterministik — tanpa AI untuk visual, sehingga akurasi kunci jawaban 100% dan biaya hampir nol.</p>
+            </div>
+        </div>
+
+        <div class="section" style="margin-bottom:0">
+            <div class="section-title">Sertifikasi &amp; Pelatihan</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:13px;color:#334155">
+                <div>✓ CCNAv7: Switching, Routing &amp; Wireless Essentials — Cisco (Feb 2022)</div>
+                <div>✓ CCNAv7: Introduction to Networks — Cisco (Agu 2021)</div>
+                <div>✓ DevOps Fundamentals — Dicoding (2023)</div>
+                <div>✓ JavaScript &amp; SQL Fundamentals — Dicoding (2023)</div>
+                <div>✓ UI/UX Design Mastery — MSIB Skilvul (2022)</div>
+                <div>✓ Go Programming — Programmer Zaman Now (2022)</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
